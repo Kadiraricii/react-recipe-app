@@ -5,7 +5,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 
 function Popular() {
 
-  const [Popular, setPopular] = useState([])
+  const [ Popular, setPopular] = useState([])
 
   useEffect(() => {
     getPopular();
@@ -20,7 +20,7 @@ function Popular() {
     } else {
       const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`);
       const data = await api.json();
-
+      console.log(data,"hghghhghhgs")
       localStorage.setItem('popular', JSON.stringify(data.recipes));
       setPopular(data.recipes);
       console.log(data.recipes);
@@ -69,7 +69,7 @@ const Card = styled.div`
   min-height: 25rem;
   border-radius: 2rem;
   overflow: hidden;
-  pos
+  position: relative;
 
   img{
     border-radius: 2rem;
@@ -84,16 +84,16 @@ const Card = styled.div`
     position: absolute;
     z-index: 50%;
     bottom: 0%;
-    transfrom: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
     color: white;
     width: 100%;
-    text-algin: center;
+    text-align: center;
     font-weight: 600;
     font-size: 1rem;
     height: 40%;
     display: flex;
     justify-content: center;
-    algin-items: center;
+    align-items: center;
   }
 `;
 
