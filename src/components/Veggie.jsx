@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css';
-
+import { Link } from "react-router-dom";
 function Veggie() {
 
   const [veggie, setVeggie] = useState([])
@@ -22,7 +22,7 @@ function Veggie() {
       const data = await api.json();
 
       localStorage.setItem('veggie', JSON.stringify(data.recipes));
-      console.log(data.recipes,"ss")
+      console.log(data.recipes, "ss")
       setVeggie(data.recipes);
       console.log(data.recipes);
     }
@@ -44,9 +44,11 @@ function Veggie() {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
-                  <img src={recipe.image} alt={recipe.title} />
-                  <Gradient />
-                  <p>{recipe.title}</p>
+                  <Link to={'/recipe/' + recipe.id}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                    <Gradient />
+                  </Link>
                 </Card>
               </SplideSlide>
             );
