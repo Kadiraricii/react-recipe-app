@@ -5,7 +5,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 
 function Popular() {
 
-  const [ Popular, setPopular] = useState([])
+  const [Popular, setPopular] = useState([])
 
   useEffect(() => {
     getPopular();
@@ -25,15 +25,10 @@ function Popular() {
       setPopular(data.recipes);
       console.log(data.recipes);
     }
-
-
-
-
   };
 
   return (
     <div>
-
       <Wrapper>
         <h3>Popular Picks</h3>
 
@@ -48,9 +43,9 @@ function Popular() {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
-                  <p>{recipe.title}</p>
                   <img src={recipe.image} alt={recipe.title} />
                   <Gradient />
+                  <p>{recipe.title}</p>
                 </Card>
               </SplideSlide>
             );
@@ -61,17 +56,17 @@ function Popular() {
   );
 }
 
-
 const Wrapper = styled.div`
   margin: 4rem 0rem;
 `
+
 const Card = styled.div`
   min-height: 25rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
 
-  img{
+  img {
     border-radius: 2rem;
     position: absolute;
     left: 0;
@@ -80,10 +75,11 @@ const Card = styled.div`
     object-fit: cover;
   }
 
-  p{
+  p {
     position: absolute;
-    z-index: 50%;
+    z-index: 10;
     bottom: 0%;
+    left: 50%;
     transform: translate(-50%, 0%);
     color: white;
     width: 100%;
@@ -94,15 +90,17 @@ const Card = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 1rem;
   }
 `;
-
 
 const Gradient = styled.div`
   z-index: 3;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5));
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
 `;
+
 export default Popular
